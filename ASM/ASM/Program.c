@@ -133,6 +133,7 @@ void tinhToanPhanSo()
         scanf("%d", &chon);
     } while (chon == 1);
 }
+
 int main()
 {
     int chonCn;

@@ -2,11 +2,53 @@
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 
 #include <stdio.h>
+void kiemTraSoNguyen()
+{
 
+}
+void lapChucNang(int chonChucNang)
+{
+    int tiepTuc = 1;
+    while (tiepTuc == 1)
+    { 
+        switch (chonChucNang)
+        {
+        case 1:
+            // goi ten ham
+            break;
+		case 2:
+            // goi ten ham
+			break;
+        case 0:
+            return;
+        default:
+            printf("chon lai [0-3]");
+            break;
+        }
+		printf("Tiep tuc chuc nang nay? [1=Co | 0 =Khong]: ");
+        scanf("%d", &tiepTuc);
+		system("cls");// clear screen
+
+    }
+}
 int main()
 {
-    printf("Hi there!\n");
+    int chonChucNang;
+    do
+    {   
+		printf("===== MENU =====\n");
+		printf("1. Kiem tra so nguyen\n");
+		printf("2. Chuc nang \n");// ten chuc nang
+		printf("moi chon chuc nang:\n");
+        scanf("%d", &chonChucNang);
+        if (chonChucNang < 0 )
+        {
+            lapChucNang(chonChucNang);
+		}
+       
+    } while (chonChucNang != 0);
 }
+
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
 
