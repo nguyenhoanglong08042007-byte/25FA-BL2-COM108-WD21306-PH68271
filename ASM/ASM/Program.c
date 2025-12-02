@@ -223,8 +223,9 @@ void laiSuatNganHang()
         scanf("%d", &chon);
     } while (chon == 1);
 }
-void tienMuaXe(float phanTramVay)
+void tienMuaXe()
 {
+    float phanTramVay;
     int chon;
     do
     {
@@ -236,7 +237,8 @@ void tienMuaXe(float phanTramVay)
         double traHangThang = soTien / thoiGianVay;
         printf(" So tien tra truoc : %.2f\n", soTienTraTruoc);
         printf(" So tien tra hang thang : %.2f\n", traHangThang);
-        printf("ky han\tLai\t\tGoc\t\tTong\t\tCon lai\n");        for (int i = 1; i <= thoiGianVay; i++)
+        printf("ky han\tLai\t\tGoc\t\tTong\t\tCon lai\n");
+        for (int i = 1; i <= thoiGianVay; i++)
         {
             double tienLai = soTien * laiHangThang;
             double tongTienPhaiTra = traHangThang + tienLai;
