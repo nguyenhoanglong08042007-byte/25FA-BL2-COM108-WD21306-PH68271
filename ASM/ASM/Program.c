@@ -23,11 +23,8 @@ int kiemTraSoChinhPhuong(int x)
     else return 0;
 }
 void kiemTraSoNguyen()
-{
-    int chon;
-    do
-    {
-        int x;
+{  
+       int x;
         printf("nhap  so nguyen x = ");
         scanf_s("%d", &x);
         //kiem tra so nguyen
@@ -45,9 +42,6 @@ void kiemTraSoNguyen()
         {
             printf("%d khong phai so chinh phuong\n", x);
         }
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 int UCLN(int a, int b)
 {
@@ -65,10 +59,6 @@ int BCNN(int a, int b)
 }
 void uCLNBCNN()
 {
-    
-    int chon;
-    do
-    {
         int x, y;
         printf("Nhap x: ");
         scanf_s("%d", &x);
@@ -77,9 +67,6 @@ void uCLNBCNN()
 
         printf("Uoc chung lon nhat: %d\n", UCLN(x, y));
         printf("Boi chung nho nhat: %d\n", BCNN(x, y));
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 float tinhTienKaraoke(int start, int end) {
     if (start < 12 || end > 23 || start >= end) return -1.0;
@@ -105,10 +92,6 @@ float tinhTienKaraoke(int start, int end) {
 }
 void tienKaraoke()
 {
-    
-    int chon;
-    do
-    {
         int start, end;
         printf("Nhap gio bat dau: ");
         scanf_s("%d", &start);
@@ -124,15 +107,9 @@ void tienKaraoke()
         else {
             printf("Tong tien phai tra: %.0f VND\n", kq);
         }
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 void tienDien()
-{
-    int chon;
-    do
-    {       
+{       
         int soKwh;
         float tien;
         printf("Nhap so Kwh tieu thu : ");
@@ -162,16 +139,9 @@ void tienDien()
 			tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (soKwh - 400) * 2927;
 		}
         printf("Tien dien phai tra: %.0f VND\n", tien);
-
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 void doiTien()
 {
-    int chon;
-    do
-    {
         int soTien;
         int menhGia[] = { 500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000 };
         int soLuong[9]; // mảng lưu số tờ mỗi mệnh giá
@@ -189,15 +159,9 @@ void doiTien()
             if (soLuong[i] > 0)
                 printf("%d x %d VND\n", soLuong[i], menhGia[i]);
         }
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 void laiSuatNganHang()
 {
-    int chon;
-    do
-    {
         double soTienVay;
         printf("Nhap so tien vay (VND): ");
         scanf_s("%lf", &soTienVay);
@@ -214,16 +178,10 @@ void laiSuatNganHang()
             conLai -= goc;
         }
         printf("Tong da tra: %.2lf VND\n", tong);
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 void tienMuaXe()
 {
     float phanTramVay;
-    int chon;
-    do
-    {
         printf("nhap phan tram vay (vi du 0.7 la vay 70% )");
 		scanf_s("%f", &phanTramVay);
         double phanTramTraTruoc = 1.0 - phanTramVay;
@@ -242,9 +200,6 @@ void tienMuaXe()
             soTien -= traHangThang;
             printf("%d\t%.2f\t%.2f\t%.2f\t%.2f\n", i, tienLai, traHangThang, tongTienPhaiTra, soTien);
         }
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 struct SinhVien
 {
@@ -252,10 +207,7 @@ struct SinhVien
     float diemTB;
 };
 void thongTinSinhVien()
-{   
-    int chon;
-    do
-    {
+{
 		int soLuong;
 		struct SinhVien sv[50];
 		printf("Nhap so luong sinh vien: ");
@@ -284,16 +236,9 @@ void thongTinSinhVien()
 
             printf("%d\t%-15s\t%.1f\t%s\n", i + 1, sv[i].hoTen, sv[i].diemTB, hocLuc);
         }
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 void gameFplValott(int *a, int *b)
 {
-    int chon;
-    srand(time(0));
-    do
-	{
 		int flag ;
         do
         {
@@ -322,12 +267,8 @@ void gameFplValott(int *a, int *b)
         {
             printf("Chuc ban may man lan sau!\n");
         }
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
 }
 
-#include <stdio.h>
 
 // Struct phân số
 typedef struct {
@@ -383,9 +324,8 @@ PhanSo chia(PhanSo a, PhanSo b) {
 }
 
 // Hàm chính
-void tinhToanPhanSo() {
-    int chon;
-    do {
+void tinhToanPhanSo()
+{
         PhanSo so1, so2;
 
         printf("Nhap tu va mau cua phan so thu 1: ");
@@ -396,7 +336,6 @@ void tinhToanPhanSo() {
 
         if (so1.mau == 0 || so2.mau == 0) {
             printf("Loi: Mau so khong duoc bang 0!\n");
-            continue;
         }
 
         printf("Ket qua CONG  = %d / %d\n", cong(so1, so2).tu, cong(so1, so2).mau);
@@ -406,11 +345,35 @@ void tinhToanPhanSo() {
             printf("Ket qua CHIA  = %d / %d\n", chia(so1, so2).tu, chia(so1, so2).mau);
         else
             printf("Ket qua CHIA  = Loi: Khong the chia cho 0\n");
-
-        printf("Ban co muon tiep tuc [1|0]? ");
-        scanf_s("%d", &chon);
-
-    } while (chon == 1);
+}
+void lapChucNang(int chonCn)
+{
+    int tiepTuc = 1;
+    while (tiepTuc == 1)
+    {
+        switch (chonCn)
+        {
+        case 1: kiemTraSoNguyen(); break;
+        case 2: uCLNBCNN(); break;
+        case 3: tienKaraoke(); break;
+        case 4: tienDien(); break;
+        case 5: doiTien(); break;
+        case 6:laiSuatNganHang(); break;
+        case 7: tienMuaXe(); break;
+        case 8: thongTinSinhVien(); break;
+        case 9: {
+            int a, b;
+            gameFplValott(&a, &b);
+            break;
+        }
+        case 10: tinhToanPhanSo(); break;
+        default:
+            printf("Hay chon lai Cn tu [1-10]\n");
+        }
+        printf("Tiep tuc chuc nang nay? [1=Co | 0 =Khong]: ");
+        scanf("%d", &tiepTuc);
+        system("cls");// clear screen
+    }
 }
     int main()
     {
@@ -431,26 +394,11 @@ void tinhToanPhanSo() {
             printf("0.Thoat\n");
             printf("Moi ban chon chuc nang: ");
             scanf_s("%d", &chonCn);
-
-            switch (chonCn)
+            if (chonCn != 0)
             {
-            case 1: kiemTraSoNguyen(); break;
-            case 2: uCLNBCNN(); break;
-            case 3: tienKaraoke(); break;
-            case 4: tienDien(); break;
-            case 5: doiTien(); break;
-            case 6:laiSuatNganHang(); break;
-            case 7: tienMuaXe(); break;
-            case 8: thongTinSinhVien(); break;
-            case 9: {
-                int a, b;
-                gameFplValott(&a, &b);
-                break;
+                lapChucNang(chonCn);
             }
-            case 10: tinhToanPhanSo(); break;
-            default:
-                printf("Hay chon lai Cn tu [1-10]\n");
-            }
+            
         } while (chonCn != 0);
     }
 
