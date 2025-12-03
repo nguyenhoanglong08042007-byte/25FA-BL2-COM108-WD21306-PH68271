@@ -246,13 +246,13 @@ void tienMuaXe()
         scanf_s("%d", &chon);
     } while (chon == 1);
 }
+struct SinhVien
+{
+    char hoTen[50];
+    float diemTB;
+};
 void thongTinSinhVien()
 {   
-    struct SinhVien
-    {
-        char hoTen[50];
-        float diemTB;
-	};
     int chon;
     do
     {
@@ -260,21 +260,29 @@ void thongTinSinhVien()
 		struct SinhVien sv[50];
 		printf("Nhap so luong sinh vien: ");
 		scanf_s("%d", &soLuong);
+        getchar();
         for (int i = 0; i < soLuong; i++)
         {
-			fflush(stdin);
+            fflush(stdin);
             printf("Nhap ho ten sinh vien %d: ", i + 1);
             fgets(sv[i].hoTen, sizeof(sv[i].hoTen), stdin);
-            printf("Nhap diem trung binh sinh vien %d: ", i + 1);
-			scanf_s("%f", &sv[i].diemTB);
-			printf("\n\tưtDanh sach sinh vien vua nhap:\n");
-			printf("STT\tHo va Ten\t\tDiem TB\n");
-            for (int j = 0; j < soLuong; j++)
-            {
-                printf("%d\t%s\t%.2f\n", j + 1, sv[j].hoTen, sv[j].diemTB);
-            }
-            
+            sv[i].hoTen[strcspn(sv[i].hoTen, "\n")] = 0; //xoa newline
 
+            printf("Nhap diem trung binh sinh vien %d: ", i + 1);
+            scanf_s("%f", &sv[i].diemTB);
+            getchar();
+        }
+        printf("\nDANH SACH SINH VIEN\n");
+        printf("STT\tHo ten\t\tDiem TB\tHoc luc\n");
+        for (int i = 0; i < soLuong; i++)
+        {
+            char hocLuc[10];
+            if (sv[i].diemTB >= 8) strcpy(hocLuc, "Gioi");
+            else if (sv[i].diemTB >= 6.5) strcpy(hocLuc, "Kha");
+            else if (sv[i].diemTB >= 5) strcpy(hocLuc, "Trung binh");
+            else strcpy(hocLuc, "Yeu");
+
+            printf("%d\t%-15s\t%.1f\t%s\n", i + 1, sv[i].hoTen, sv[i].diemTB, hocLuc);
         }
         printf("Ban co muon tiep tuc[1|0]\n");
         scanf_s("%d", &chon);
