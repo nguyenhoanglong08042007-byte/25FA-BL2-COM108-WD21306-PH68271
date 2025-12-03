@@ -1,6 +1,7 @@
-﻿
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <time.h>
 int isPrime(int x)
 {
     if (x < 2) return 0;      // <2 là không phải số nguyên tố
@@ -246,33 +247,163 @@ void tienMuaXe()
     } while (chon == 1);
 }
 void thongTinSinhVien()
-{
+{   
+    struct SinhVien
+    {
+        char hoTen[50];
+        float diemTB;
+	};
     int chon;
     do
     {
+		int soLuong;
+		struct SinhVien sv[50];
+		printf("Nhap so luong sinh vien: ");
+		scanf_s("%d", &soLuong);
+        for (int i = 0; i < soLuong; i++)
+        {
+			fflush(stdin);
+            printf("Nhap ho ten sinh vien %d: ", i + 1);
+            fgets(sv[i].hoTen, sizeof(sv[i].hoTen), stdin);
+            printf("Nhap diem trung binh sinh vien %d: ", i + 1);
+			scanf_s("%f", &sv[i].diemTB);
+			printf("\n\tưtDanh sach sinh vien vua nhap:\n");
+			printf("STT\tHo va Ten\t\tDiem TB\n");
+            for (int j = 0; j < soLuong; j++)
+            {
+                printf("%d\t%s\t%.2f\n", j + 1, sv[j].hoTen, sv[j].diemTB);
+            }
+            
+
+        }
         printf("Ban co muon tiep tuc[1|0]\n");
         scanf_s("%d", &chon);
     } while (chon == 1);
 }
-void gameFplValott()
+void gameFplValott(int *a, int *b)
 {
     int chon;
+    srand(time(0));
     do
-    {
-        printf("Ban co muon tiep tuc[1|0]\n");
-        scanf_s("%d", &chon);
-    } while (chon == 1);
-}
-void tinhToanPhanSo()
-{
-    int chon;
-    do
-    { 
+	{
+		int flag ;
+        do
+        {
+            printf("Nhap 2 so (trong khoang 1-15): ");
+            scanf_s("%d %d", a, b);
+            // kiem tra hop le
+            flag = *a < 1 || *a > 15 || *b < 1 || *b > 15;
+            if (flag)
+            {
+                printf("So ban nhap khong hop le. Moi nhap lai!\n");
+            }
+        } while (flag);
+        int rnd1, rnd2;
+		rnd1 = 1 + rand() % 15;
+		rnd2 = 1 + rand() % 15;
+		printf("So duoc sinh ra : so 1 la: %d, so 2 la: %d\n", rnd1, rnd2);
+        if ( *a == rnd1 && *b == rnd2)
+        {
+            printf("Chuc mung ban da trung giai Nhat!\n");
+        }
+        else if (*a == rnd1 || *b == rnd2)
+        {
+            printf("Chuc mung ban da trung giai Nhi!\n");
+        }
+        else
+        {
+            printf("Chuc ban may man lan sau!\n");
+        }
         printf("Ban co muon tiep tuc[1|0]\n");
         scanf_s("%d", &chon);
     } while (chon == 1);
 }
 
+#include <stdio.h>
+
+// Struct phân số
+typedef struct {
+    int tu;
+    int mau;
+} PhanSo;
+// Hàm tính UCLN
+int ucln(int a, int b) {
+    if (b == 0) return a;
+    return ucln(b, a % b);
+}
+// Rút gọn phân số
+PhanSo rutGon(PhanSo p) {
+    int uc = ucln(p.tu, p.mau);
+    p.tu /= uc;
+    p.mau /= uc;
+    if (p.mau < 0) {
+        p.tu = -p.tu;
+        p.mau = -p.mau;
+    }
+    return p;
+}
+// Cộng
+PhanSo cong(PhanSo a, PhanSo b) {
+    PhanSo kq;
+    kq.tu = a.tu * b.mau + b.tu * a.mau;
+    kq.mau = a.mau * b.mau;
+    return rutGon(kq);
+}
+
+// Trừ
+PhanSo tru(PhanSo a, PhanSo b) {
+    PhanSo kq;
+    kq.tu = a.tu * b.mau - b.tu * a.mau;
+    kq.mau = a.mau * b.mau;
+    return rutGon(kq);
+}
+
+// Nhân
+PhanSo nhan(PhanSo a, PhanSo b) {
+    PhanSo kq;
+    kq.tu = a.tu * b.tu;
+    kq.mau = a.mau * b.mau;
+    return rutGon(kq);
+}
+
+// Chia
+PhanSo chia(PhanSo a, PhanSo b) {
+    PhanSo kq;
+    kq.tu = a.tu * b.mau;
+    kq.mau = a.mau * b.tu;
+    return rutGon(kq);
+}
+
+// Hàm chính
+void tinhToanPhanSo() {
+    int chon;
+    do {
+        PhanSo so1, so2;
+
+        printf("Nhap tu va mau cua phan so thu 1: ");
+        scanf_s("%d %d", &so1.tu, &so1.mau);
+
+        printf("Nhap tu va mau cua phan so thu 2: ");
+        scanf_s("%d %d", &so2.tu, &so2.mau);
+
+        if (so1.mau == 0 || so2.mau == 0) {
+            printf("Loi: Mau so khong duoc bang 0!\n");
+            continue;
+        }
+
+        printf("Ket qua CONG  = %d / %d\n", cong(so1, so2).tu, cong(so1, so2).mau);
+        printf("Ket qua TRU   = %d / %d\n", tru(so1, so2).tu, tru(so1, so2).mau);
+        printf("Ket qua NHAN  = %d / %d\n", nhan(so1, so2).tu, nhan(so1, so2).mau);
+        if (so2.tu != 0)
+            printf("Ket qua CHIA  = %d / %d\n", chia(so1, so2).tu, chia(so1, so2).mau);
+        else
+            printf("Ket qua CHIA  = Loi: Khong the chia cho 0\n");
+
+        printf("Ban co muon tiep tuc [1|0]? ");
+        scanf_s("%d", &chon);
+
+    } while (chon == 1);
+}
     int main()
     {
         int chonCn;
@@ -303,12 +434,17 @@ void tinhToanPhanSo()
             case 6:laiSuatNganHang(); break;
             case 7: tienMuaXe(); break;
             case 8: thongTinSinhVien(); break;
-            case 9: gameFplValott(); break;
+            case 9: {
+                int a, b;
+                gameFplValott(&a, &b);
+                break;
+            }
             case 10: tinhToanPhanSo(); break;
             default:
                 printf("Hay chon lai Cn tu [1-10]\n");
             }
         } while (chonCn != 0);
     }
+
 
 
