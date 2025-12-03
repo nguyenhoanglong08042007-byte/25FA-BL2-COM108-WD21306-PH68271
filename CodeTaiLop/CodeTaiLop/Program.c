@@ -6,11 +6,6 @@ void kiemTraSoNguyen()
 {
 
 }
-void demoString()
-{
-	//string = chuoi ky tu
-    char name[10] = { 'A', 'n' ,'h' };
-
 void demoMang2Chieu()
 {
     int array[2][3];
@@ -31,6 +26,29 @@ void demoMang2Chieu()
         printf("\n");
     }
  }
+void demoString()
+{
+    //string = chuoi ky tu
+    char name[50] = "Anh"; /*{ 'A', 'n' ,'h' ''\0 (rong) };*/
+    //gets(name) ; > fgets();
+   /* for (int i = 0; i < 50; i++)
+    {
+        scanf_s(" %c", &name[i]);
+    }*/
+    while (getchar() != '\n') // doc het cac ki tu cho den khi gap newline 
+    {
+        printf("%c", getchar());
+    }
+    printf("nhap ten cua ban : ");
+    fgets(name, sizeof(name), stdin);
+    /*for (int i = 0; i < 50; i++)
+    {
+        printf("%c", name[i]);
+    }*/
+    printf("%s", name);
+    printf("\n");
+    /*puts(name);*/
+}
 void lapChucNang(int chonChucNang)
 {
     int tiepTuc = 1;
@@ -43,7 +61,7 @@ void lapChucNang(int chonChucNang)
             break;
 		case 2:
             demoMang2Chieu(); break;
-            case 3
+        case 3:
             demoString(); // goi ten ham
 			break;
         default:
@@ -63,6 +81,7 @@ int main()
 		printf("===== MENU =====\n");
 		printf("1. Kiem tra so nguyen\n");
         printf("2. demoMang2Chieu \n");
+        printf("3. demoChuoiKiTu \n");
         printf("moi chon chuc nang:\n");
         scanf("%d", &chonChucNang);
         if (chonChucNang != 0 )
