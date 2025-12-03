@@ -1,6 +1,4 @@
-﻿// CConsoleApplication.c : file nay chua 'main' function. 
-// Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
-
+﻿
 #include <stdio.h>
 #include <math.h>
 int isPrime(int x)
@@ -30,7 +28,7 @@ void kiemTraSoNguyen()
     {
         int x;
         printf("nhap  so nguyen x = ");
-        scanf("%d", &x);
+        scanf_s("%d", &x);
         //kiem tra so nguyen
         printf("%d la so nguyen", x);
         printf("\n");
@@ -47,7 +45,7 @@ void kiemTraSoNguyen()
             printf("%d khong phai so chinh phuong\n", x);
         }
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 int UCLN(int a, int b)
@@ -72,14 +70,14 @@ void uCLNBCNN()
     {
         int x, y;
         printf("Nhap x: ");
-        scanf("%d", &x);
+        scanf_s("%d", &x);
         printf("Nhap y: ");
-        scanf("%d", &y);
+        scanf_s("%d", &y);
 
         printf("Uoc chung lon nhat: %d\n", UCLN(x, y));
         printf("Boi chung nho nhat: %d\n", BCNN(x, y));
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 float tinhTienKaraoke(int start, int end) {
@@ -112,10 +110,10 @@ void tienKaraoke()
     {
         int start, end;
         printf("Nhap gio bat dau: ");
-        scanf("%d", &start);
+        scanf_s("%d", &start);
 
         printf("Nhap gio ket thuc: ");
-        scanf("%d", &end);
+        scanf_s("%d", &end);
 
         float kq = tinhTienKaraoke(start, end); // gọi hàm
 
@@ -126,7 +124,7 @@ void tienKaraoke()
             printf("Tong tien phai tra: %.0f VND\n", kq);
         }
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void tienDien()
@@ -137,7 +135,7 @@ void tienDien()
         int soKwh;
         float tien;
         printf("Nhap so Kwh tieu thu : ");
-		scanf("%d", &soKwh);
+		scanf_s("%d", &soKwh);
         if(soKwh <= 50)
         {
             tien = soKwh * 1678;
@@ -165,7 +163,7 @@ void tienDien()
         printf("Tien dien phai tra: %.0f VND\n", tien);
 
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void doiTien()
@@ -177,7 +175,7 @@ void doiTien()
         int menhGia[] = { 500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000 };
         int soLuong[9]; // mảng lưu số tờ mỗi mệnh giá
         printf("Nhap so tien can doi (VND): ");
-        scanf("%d", &soTien); // gán giá trị cho soTien
+        scanf_s("%d", &soTien); // gán giá trị cho soTien
         int tienConLai = soTien;
         for (int i = 0; i < 9; i++) {
             soLuong[i] = soTien / menhGia[i]; // số tờ của mệnh giá i
@@ -190,10 +188,8 @@ void doiTien()
             if (soLuong[i] > 0)
                 printf("%d x %d VND\n", soLuong[i], menhGia[i]);
         }
-        system("pause");
-        system("cls");
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void laiSuatNganHang()
@@ -203,7 +199,7 @@ void laiSuatNganHang()
     {
         double soTienVay;
         printf("Nhap so tien vay (VND): ");
-        scanf("%lf", &soTienVay);
+        scanf_s("%lf", &soTienVay);
 
         double laiSuat = 5.0; // 5%/thang
         double goc = soTienVay / 12, tong = 0, conLai = soTienVay;
@@ -212,15 +208,13 @@ void laiSuatNganHang()
         for (int i = 1; i <= 12; i++) {
             double lai = conLai * laiSuat / 100;
             double tra = goc + lai;
-            printf("%2d\t%.2lf\t%.2lf\t%.2lf\n", i, goc,       lai,      tra);
+            printf("%2d\t%.2lf\t%.2lf\t%.2lf\n", i, goc,lai,tra);
             tong += tra;
             conLai -= goc;
         }
         printf("Tong da tra: %.2lf VND\n", tong);
-        system("pause");
-        system("cls");
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void tienMuaXe()
@@ -229,8 +223,10 @@ void tienMuaXe()
     int chon;
     do
     {
+        printf("nhap phan tram vay (vi du 0.7 la vay 70% )");
+		scanf_s("%f", &phanTramVay);
         double phanTramTraTruoc = 1.0 - phanTramVay;
-        double soTien = 50000000.0; // 500 triệu
+        double soTien = 500000000.0; // 500 triệu
         double laiHangThang = 0.072 / 12; // 7.2%/năm
         int thoiGianVay = 24; // 24 tháng
         double soTienTraTruoc = soTien * phanTramTraTruoc; soTien = soTien - soTienTraTruoc;
@@ -246,7 +242,7 @@ void tienMuaXe()
             printf("%d\t%.2f\t%.2f\t%.2f\t%.2f\n", i, tienLai, traHangThang, tongTienPhaiTra, soTien);
         }
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void thongTinSinhVien()
@@ -255,7 +251,7 @@ void thongTinSinhVien()
     do
     {
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void gameFplValott()
@@ -264,7 +260,7 @@ void gameFplValott()
     do
     {
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 void tinhToanPhanSo()
@@ -273,7 +269,7 @@ void tinhToanPhanSo()
     do
     { 
         printf("Ban co muon tiep tuc[1|0]\n");
-        scanf("%d", &chon);
+        scanf_s("%d", &chon);
     } while (chon == 1);
 }
 
@@ -295,7 +291,7 @@ void tinhToanPhanSo()
             printf("10.Tinh toan phan so\n");
             printf("0.Thoat\n");
             printf("Moi ban chon chuc nang: ");
-            scanf("%d", &chonCn);
+            scanf_s("%d", &chonCn);
 
             switch (chonCn)
             {
@@ -316,24 +312,3 @@ void tinhToanPhanSo()
     }
 
 
-// Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
-
-// Danh cho nguoi moi bat dau:
-//   1. Mo "View" > "Solution Explorer"
-//          de them/quan ly cac files
-//   2. Mo "View" > "Output"
-//          de kiem tra "build output" va "cac thong bao khac"
-//   3. Mo "View" > "Error List"
-//          de xem loi
-//   4. Chon Project > "Add" > "New Item"
-//          de tao moi file code,
-//      hoac Project > "Add" > "Existing Item"
-//          de them file da ton tai vao project nay.
-//   5. Sau nay, de mo lai project nay,
-//          chon "File > Open > Project" va chon file *.sln
-//      Co the xem thu muc project, noi luu file *.sln bang cach
-//          trong cua so "Solution Explorer"
-//          bam chuot phai vao "Solution"
-//          chon "Open Folder in File Explorer"
-
-// GV: AnhTT184
