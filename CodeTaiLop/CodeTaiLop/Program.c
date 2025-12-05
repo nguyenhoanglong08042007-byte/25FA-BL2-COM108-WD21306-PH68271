@@ -2,6 +2,7 @@
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 
 #include <stdio.h>
+#include <string.h>
 void kiemTraSoNguyen()
 {
 
@@ -29,7 +30,7 @@ void demoMang2Chieu()
 void demoString()
 {
     //string = chuoi ky tu
-    char name[50] = "Anh"; /*{ 'A', 'n' ,'h' ''\0 (rong) };*/
+    char mangKyTu[50] = "Anh"; /*{ 'A', 'n' ,'h' ''\0 (rong) };*/
     //gets(name) ; > fgets();
    /* for (int i = 0; i < 50; i++)
     {
@@ -40,15 +41,51 @@ void demoString()
         printf("%c", getchar());
     }
     printf("nhap ten cua ban : ");
-    fgets(name, sizeof(name), stdin);
+    fgets(mangKyTu, sizeof(mangKyTu), stdin);
     /*for (int i = 0; i < 50; i++)
     {
         printf("%c", name[i]);
     }*/
-    printf("%s", name);
+    printf("%s", mangKyTu);
     printf("\n");
     /*puts(name);*/
+    printf("string Length: ");
+    printf("%d", strlen(mangKyTu) - 1);
+    printf("\n");
+	printf("String Compare The Same As : ");
+	printf("%d", strcmp("abc", "aBc"));
+	printf("\n");
+    printf("String Compare Less Than : ");
+	printf("%d", strcmp("A", "C"));
+    printf("\n");
+    printf("String Compare Great Than : ");
+	printf("%d", strcmp("C", "A"));
+	printf("\n");
+    printf("String Reverse (Encryption) :");
+	printf("%s", strrev(mangKyTu));
+	printf("\n");   
+	printf("String Reverse (Decryption) :");
+	printf("%s", strrev(mangKyTu)); 
+	printf("\n");   
+    printf("String Lower: ");
+	printf("%s", strlwr(mangKyTu));
+    printf("\n");   
+	printf("String Upper: ");
+    printf("%s", strupr(mangKyTu));
+	printf("\n");
+    printf("Find String in String: ");
+    if (strstr(mangKyTu, "A") != NULL)
+    {
+		printf("Found: ");
+		printf("%s", strstr(mangKyTu, "A"));
+    }
+    else
+    {
+        printf("NOT FOUND");
+    }
+	printf("\n");
 }
+
 void lapChucNang(int chonChucNang)
 {
     int tiepTuc = 1;
@@ -82,6 +119,7 @@ int main()
 		printf("1. Kiem tra so nguyen\n");
         printf("2. demoMang2Chieu \n");
         printf("3. demoChuoiKiTu \n");
+        printf("5. demoString \n");
         printf("moi chon chuc nang:\n");
         scanf("%d", &chonChucNang);
         if (chonChucNang != 0 )
